@@ -1,0 +1,21 @@
+server:
+  #服务中心页面地址的端口号
+  port: 7001
+eureka:
+  instance:
+    hostname: 127.0.0.1
+  server:
+    # 关闭自我保护模式（当一定时间内没有收到某个微服务实例的心跳时，不会注销这个微服务）
+    enable-self-preservation: false
+  client:
+    # 是否向注册中心注册自己（因为它就是注册中心，负载均衡时需要用到）[表示是否将自己注册到eureka server，因为要构建集群环境，需要将自己注册到及群众，所以应该开启。默认为true，可不显式设置]
+    registerWithEureka: false
+    # 是否需要检索服务（检索服务是client端的事）[表示是否从eureka server获取注册信息，如果是单一节点，不需要同步其他eureka server节点，则可以设置为false，若是集群，应该设置为true，默认为true，可不设置]
+    fetchRegistry: false
+    # eureka服务器访问地址
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/ #单机配置
+spring:
+  application:
+    # 应用名
+    name: launchEureka

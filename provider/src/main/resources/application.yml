@@ -1,0 +1,12 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: apiService # apiService,被调用的实例名|标识为服务提供者的实例名
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:7001/eureka
+    registerWithEureka: true # 提供者需要注册到注册服务中心去!!!
+  instance:
+    prefer-ip-address: true #访问地址显示IP
